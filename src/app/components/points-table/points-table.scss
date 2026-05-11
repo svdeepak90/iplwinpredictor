@@ -1,0 +1,165 @@
+.table-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+.btn-reset {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.points-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+  
+  th, td {
+    padding: 1rem 0.5rem;
+    text-align: center;
+  }
+
+  th {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .col-rank {
+    width: 40px;
+  }
+
+  .col-team {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .col-num {
+    width: 60px;
+  }
+
+  .col-nrr {
+    width: 80px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .col-pts {
+    width: 60px;
+    font-size: 1.125rem;
+  }
+
+  .team-row {
+    background: rgba(255, 255, 255, 0.03);
+    transition: transform 0.3s ease, background 0.2s ease;
+    border-radius: 8px;
+
+    td:first-child {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+
+    td:last-child {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    &.top-four {
+      background: linear-gradient(90deg, rgba(34, 197, 94, 0.15) 0%, rgba(255, 255, 255, 0.03) 100%);
+      border-left: 4px solid var(--accent-success);
+
+      td:first-child {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+    }
+  }
+}
+
+.team-logo-placeholder {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: white;
+  background: var(--bg-surface-light);
+
+  &[data-team="RCB"] { background: #E01E22; }
+  &[data-team="SRH"] { background: #F26522; }
+  &[data-team="GT"] { background: #1B2133; }
+  &[data-team="PBKS"] { background: #D71920; }
+  &[data-team="CSK"] { background: #F9CD05; color: #111; }
+  &[data-team="RR"] { background: #EA1A85; }
+  &[data-team="KKR"] { background: #3A225D; }
+  &[data-team="DC"] { background: #004C93; }
+  &[data-team="MI"] { background: #004BA0; }
+  &[data-team="LSG"] { background: #005087; }
+}
+
+.team-name {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.team-short-name {
+  display: none;
+  font-weight: 500;
+}
+
+.table-footer {
+  margin-top: 1rem;
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .team-name {
+    display: none;
+  }
+  
+  .team-short-name {
+    display: inline;
+  }
+  
+  .points-table {
+    .col-nrr {
+      display: none;
+    }
+  }
+}
