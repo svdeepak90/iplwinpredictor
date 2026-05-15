@@ -3,19 +3,19 @@
     <h2>Remaining Matches</h2>
     <p>Predict the winner to see playoffs</p>
   </div>
-  
   <div class="matches-list">
     <div class="match-card" *ngFor="let match of matches()">
-      <div class="match-info">Match {{ match.matchNo }}</div>
-      
+      <div class="match-info">Match {{ match.matchNo }} &bull; {{ match.date }} ({{ match.day }})</div>
+      <div class="match-toss" *ngIf="match.toWin">{{ match.toWin }}</div>
+      <!-- <div class="match-toss" *ngIf="match.toss">{{ match.toss }}</div> -->
+
       <div class="teams-container">
         <!-- Team 1 -->
-        <button 
-          class="team-btn" 
-          [class.selected]="match.winnerId === match.team1Id"
+        <button class="team-btn" [class.selected]="match.winnerId === match.team1Id"
           [class.dimmed]="match.winnerId && match.winnerId !== match.team1Id"
-          (click)="selectWinner(match.id, match.team1Id)">
-          <span class="team-logo" [attr.data-team]="match.team1Id">{{ match.team1Id.charAt(0) }}</span>
+          [disabled]="isPastMatch(match)"
+          (click)="selectWinner(match.id, match.team1Id, match)">
+          <img [src]="getTeamLogo(match.team1Id)" [alt]="match.team1Id + ' logo'" class="team-logo" />
           <span class="team-id">{{ match.team1Id }}</span>
           <div class="selection-indicator" *ngIf="match.winnerId === match.team1Id">✓</div>
         </button>
@@ -23,14 +23,13 @@
         <div class="vs-badge">VS</div>
 
         <!-- Team 2 -->
-        <button 
-          class="team-btn" 
-          [class.selected]="match.winnerId === match.team2Id"
+        <button class="team-btn" [class.selected]="match.winnerId === match.team2Id"
           [class.dimmed]="match.winnerId && match.winnerId !== match.team2Id"
-          (click)="selectWinner(match.id, match.team2Id)">
+          [disabled]="isPastMatch(match)"
+          (click)="selectWinner(match.id, match.team2Id, match)">
           <div class="selection-indicator" *ngIf="match.winnerId === match.team2Id">✓</div>
           <span class="team-id">{{ match.team2Id }}</span>
-          <span class="team-logo" [attr.data-team]="match.team2Id">{{ match.team2Id.charAt(0) }}</span>
+          <img [src]="getTeamLogo(match.team2Id)" [alt]="match.team2Id + ' logo'" class="team-logo" />
         </button>
       </div>
     </div>

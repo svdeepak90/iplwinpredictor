@@ -36,8 +36,9 @@
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 0.5rem;
-  
-  th, td {
+
+  th,
+  td {
     padding: 1rem 0.5rem;
     text-align: center;
   }
@@ -62,6 +63,10 @@
     gap: 0.75rem;
   }
 
+  .horizontal-line {
+    padding-bottom: 1.3rem;
+  }
+
   .col-num {
     width: 60px;
   }
@@ -74,6 +79,36 @@
   .col-pts {
     width: 60px;
     font-size: 1.125rem;
+  }
+
+  .col-form {
+    width: 140px;
+  }
+
+  .recent-form {
+    display: flex;
+    gap: 0.35rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-icon {
+    display: inline-flex;
+    width: 22px;
+    height: 22px;
+
+    .icon {
+      width: 100%;
+      height: 100%;
+    }
+
+    .icon-win {
+      color: #22c55e;
+    }
+
+    .icon-loss {
+      color: #ef4444;
+    }
   }
 
   .team-row {
@@ -108,28 +143,13 @@
   }
 }
 
-.team-logo-placeholder {
+.team-logo {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.875rem;
-  color: white;
-  background: var(--bg-surface-light);
-
-  &[data-team="RCB"] { background: #E01E22; }
-  &[data-team="SRH"] { background: #F26522; }
-  &[data-team="GT"] { background: #1B2133; }
-  &[data-team="PBKS"] { background: #D71920; }
-  &[data-team="CSK"] { background: #F9CD05; color: #111; }
-  &[data-team="RR"] { background: #EA1A85; }
-  &[data-team="KKR"] { background: #3A225D; }
-  &[data-team="DC"] { background: #004C93; }
-  &[data-team="MI"] { background: #004BA0; }
-  &[data-team="LSG"] { background: #005087; }
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px;
 }
 
 .team-name {
@@ -148,15 +168,57 @@
   text-align: right;
 }
 
+.form-legend-box {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  h4 {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .legend-items {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    .icon-win {
+      color: #22c55e;
+    }
+
+    .icon-loss {
+      color: #ef4444;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .team-name {
     display: none;
   }
-  
+
   .team-short-name {
     display: inline;
   }
-  
+
   .points-table {
     .col-nrr {
       display: none;
