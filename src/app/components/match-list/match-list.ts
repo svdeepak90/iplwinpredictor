@@ -1,6 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PredictorService, Match } from '../../services/predictor';
+
+export type MatchFilter = 'ALL' | 'UPCOMING' | 'COMPLETED';
 
 @Component({
   selector: 'app-match-list',
@@ -12,6 +14,24 @@ import { PredictorService, Match } from '../../services/predictor';
 export class MatchListComponent {
   predictorService = inject(PredictorService);
   matches = this.predictorService.matches;
+  
+  matchFilter = signal<MatchFilter>('ALL');
+
+  filteredMatches = computed(() => {
+    const matches = this.matches();
+    const filter = this.matchFilter();
+    
+    if (filter === 'ALL') return matches;
+    
+    return matches.filter(match => {
+      const isPast = this.isPastMatch(match);
+      return filter === 'COMPLETED' ? isPast : !isPast;
+    });
+  });
+
+  setFilter(filter: MatchFilter) {
+    this.matchFilter.set(filter);
+  }
 
   selectWinner(matchId: number, teamId: string, match: Match) {
     if (this.isPastMatch(match)) {

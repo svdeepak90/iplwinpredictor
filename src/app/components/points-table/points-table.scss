@@ -54,6 +54,11 @@
 
   .col-rank {
     width: 40px;
+
+    .eliminated-text {
+      color: #ef4444;
+      font-weight: bold;
+    }
   }
 
   .col-team {
@@ -108,6 +113,10 @@
 
     .icon-loss {
       color: #ef4444;
+    }
+
+    .icon-nr {
+      color: #9ca3af;
     }
   }
 
@@ -206,6 +215,10 @@
 
     .icon-loss {
       color: #ef4444;
+    }
+
+    .icon-nr {
+      color: #9ca3af;
     }
   }
 }

@@ -1,10 +1,18 @@
 <div class="matches-container glass-panel">
   <div class="matches-header">
-    <h2>Remaining Matches</h2>
-    <p>Predict the winner to see playoffs</p>
+    <div class="header-content">
+      <h2>Remaining Matches</h2>
+      <p>Predict the winner to see playoffs</p>
+    </div>
+    
+    <div class="filter-tabs">
+      <button class="filter-tab" [class.active]="matchFilter() === 'ALL'" (click)="setFilter('ALL')">All</button>
+      <button class="filter-tab" [class.active]="matchFilter() === 'UPCOMING'" (click)="setFilter('UPCOMING')">Upcoming</button>
+      <button class="filter-tab" [class.active]="matchFilter() === 'COMPLETED'" (click)="setFilter('COMPLETED')">Completed</button>
+    </div>
   </div>
   <div class="matches-list">
-    <div class="match-card" *ngFor="let match of matches()">
+    <div class="match-card" *ngFor="let match of filteredMatches()" [class.completed-match]="isPastMatch(match)">
       <div class="match-info">Match {{ match.matchNo }} &bull; {{ match.date }} ({{ match.day }})</div>
       <div class="match-toss" *ngIf="match.toWin">{{ match.toWin }}</div>
       <!-- <div class="match-toss" *ngIf="match.toss">{{ match.toss }}</div> -->
