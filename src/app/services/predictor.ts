@@ -13,6 +13,7 @@ export interface Team {
   initialNrr: number;
   recentForm: ('W' | 'L' | 'NR')[];
   isEliminated?: boolean;
+  isQualified?: boolean;
 }
 
 export interface Match {
@@ -32,16 +33,16 @@ export interface Match {
 })
 export class PredictorService {
   private readonly initialTeams: Team[] = [
-    { id: 'RCB', shortName: 'RCB', name: 'Royal Challengers Bengaluru', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/d/d4/Royal_Challengers_Bengaluru_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 1.103, points: 0, initialNrr: 1.053, recentForm: ['W', 'W', 'L', 'L', 'W'] },
-    { id: 'SRH', shortName: 'SRH', name: 'Sunrisers Hyderabad', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/5/51/Sunrisers_Hyderabad_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.737, points: 0, initialNrr: 0.331, recentForm: ['W', 'W', 'L', 'W', 'L'] },
-    { id: 'GT', shortName: 'GT', name: 'Gujarat Titans', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/0/09/Gujarat_Titans_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.228, points: 0, initialNrr: 0.551, recentForm: ['W', 'W', 'W', 'W', 'W'] },
-    { id: 'PBKS', shortName: 'PBKS', name: 'Punjab Kings', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/d/d4/Punjab_Kings_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.428, points: 0, initialNrr: 0.355, recentForm: ['W', 'L', 'L', 'L', 'L'] },
-    { id: 'CSK', shortName: 'CSK', name: 'Chennai Super Kings', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/2/2b/Chennai_Super_Kings_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.185, points: 0, initialNrr: 0.027, recentForm: ['W', 'L', 'W', 'W', 'W'] },
-    { id: 'RR', shortName: 'RR', name: 'Rajasthan Royals', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/5/5c/This_is_the_logo_for_Rajasthan_Royals%2C_a_cricket_team_playing_in_the_Indian_Premier_League_%28IPL%29.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.082, points: 0, initialNrr: 0.082, recentForm: ['W', 'L', 'W', 'L', 'L'] },
-    { id: 'KKR', shortName: 'KKR', name: 'Kolkata Knight Riders', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/4/4c/Kolkata_Knight_Riders_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: -0.169, points: 0, initialNrr: -0.198, recentForm: ['L', 'W', 'W', 'W', 'W'] },
-    { id: 'DC', shortName: 'DC', name: 'Delhi Capitals', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/2/2f/Delhi_Capitals.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: -0.993, points: 0, initialNrr: -0.993, recentForm: ['L', 'W', 'L', 'L', 'W'] },
+    { id: 'RCB', shortName: 'RCB', name: 'Royal Challengers Bengaluru', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/d/d4/Royal_Challengers_Bengaluru_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 1.103, points: 0, initialNrr: 1.065, recentForm: ['W', 'W', 'L', 'L', 'W'], isQualified: true },
+    { id: 'SRH', shortName: 'SRH', name: 'Sunrisers Hyderabad', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/5/51/Sunrisers_Hyderabad_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.737, points: 0, initialNrr: 0.350, recentForm: ['W', 'W', 'L', 'W', 'L'], isQualified: true },
+    { id: 'GT', shortName: 'GT', name: 'Gujarat Titans', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/0/09/Gujarat_Titans_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.228, points: 0, initialNrr: 0.400, recentForm: ['W', 'W', 'W', 'W', 'W'], isQualified: true },
+    { id: 'PBKS', shortName: 'PBKS', name: 'Punjab Kings', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/d/d4/Punjab_Kings_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.428, points: 0, initialNrr: 0.227, recentForm: ['W', 'L', 'L', 'L', 'L'], isQualified: false },
+    { id: 'CSK', shortName: 'CSK', name: 'Chennai Super Kings', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/2/2b/Chennai_Super_Kings_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.185, points: 0, initialNrr: -0.016, recentForm: ['W', 'L', 'W', 'W', 'W'], isQualified: false },
+    { id: 'RR', shortName: 'RR', name: 'Rajasthan Royals', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/5/5c/This_is_the_logo_for_Rajasthan_Royals%2C_a_cricket_team_playing_in_the_Indian_Premier_League_%28IPL%29.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.082, points: 0, initialNrr: 0.083, recentForm: ['W', 'L', 'W', 'L', 'L'], isQualified: false },
+    { id: 'KKR', shortName: 'KKR', name: 'Kolkata Knight Riders', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/4/4c/Kolkata_Knight_Riders_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: -0.169, points: 0, initialNrr: -0.038, recentForm: ['L', 'W', 'W', 'W', 'W'] },
+    { id: 'DC', shortName: 'DC', name: 'Delhi Capitals', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/2/2f/Delhi_Capitals.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: -0.993, points: 0, initialNrr: -0.871, recentForm: ['L', 'W', 'L', 'L', 'W'] },
     { id: 'MI', shortName: 'MI', name: 'Mumbai Indians', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/c/cd/Mumbai_Indians_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: -0.585, points: 0, initialNrr: -0.504, recentForm: ['L', 'L', 'L', 'W', 'L'], isEliminated: true },
-    { id: 'LSG', shortName: 'LSG', name: 'Lucknow Super Giants', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/3/34/Lucknow_Super_Giants_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: -0.907, points: 0, initialNrr: -0.701, recentForm: ['L', 'L', 'L', 'W', 'L'], isEliminated: true },
+    { id: 'LSG', shortName: 'LSG', name: 'Lucknow Super Giants', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/3/34/Lucknow_Super_Giants_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: -0.907, points: 0, initialNrr: -0.702, recentForm: ['L', 'L', 'L', 'W', 'L'], isEliminated: true },
   ];
 
   private readonly initialMatches: Match[] = [
@@ -104,11 +105,11 @@ export class PredictorService {
     { id: 57, matchNo: 57, date: '13-MAY-26', day: 'Wed', team1Id: 'RCB', team2Id: 'KKR', winnerId: 'RCB', toss: 'RCB chose to bowl', toWin: 'RCB won' },
     { id: 58, matchNo: 58, date: '14-MAY-26', day: 'Thu', team1Id: 'PBKS', team2Id: 'MI', winnerId: 'MI', toWin: 'MI won' },
     { id: 59, matchNo: 59, date: '15-MAY-26', day: 'Fri', team1Id: 'LSG', team2Id: 'CSK', winnerId: 'LSG', toWin: 'LSG won' },
-    { id: 60, matchNo: 60, date: '16-MAY-26', day: 'Sat', team1Id: 'KKR', team2Id: 'GT', winnerId: null },
-    { id: 61, matchNo: 61, date: '17-MAY-26', day: 'Sun', team1Id: 'PBKS', team2Id: 'RCB', winnerId: null },
-    { id: 62, matchNo: 62, date: '17-MAY-26', day: 'Sun', team1Id: 'DC', team2Id: 'RR', winnerId: null },
-    { id: 63, matchNo: 63, date: '18-MAY-26', day: 'Mon', team1Id: 'CSK', team2Id: 'SRH', winnerId: null },
-    { id: 64, matchNo: 64, date: '19-MAY-26', day: 'Tue', team1Id: 'RR', team2Id: 'LSG', winnerId: null },
+    { id: 60, matchNo: 60, date: '16-MAY-26', day: 'Sat', team1Id: 'KKR', team2Id: 'GT', winnerId: 'KKR', toWin: 'KKR won' },
+    { id: 61, matchNo: 61, date: '17-MAY-26', day: 'Sun', team1Id: 'PBKS', team2Id: 'RCB', winnerId: 'RCB', toWin: 'RCB won' },
+    { id: 62, matchNo: 62, date: '17-MAY-26', day: 'Sun', team1Id: 'DC', team2Id: 'RR', winnerId: 'DC', toWin: 'DC won' },
+    { id: 63, matchNo: 63, date: '18-MAY-26', day: 'Mon', team1Id: 'CSK', team2Id: 'SRH', winnerId: 'SRH', toWin: 'SRH won' },
+    { id: 64, matchNo: 64, date: '19-MAY-26', day: 'Tue', team1Id: 'RR', team2Id: 'LSG', winnerId: 'RR', toWin: 'RR won' },
     { id: 65, matchNo: 65, date: '20-MAY-26', day: 'Wed', team1Id: 'KKR', team2Id: 'MI', winnerId: null },
     { id: 66, matchNo: 66, date: '21-MAY-26', day: 'Thu', team1Id: 'GT', team2Id: 'CSK', winnerId: null },
     { id: 67, matchNo: 67, date: '22-MAY-26', day: 'Fri', team1Id: 'SRH', team2Id: 'RCB', winnerId: null },

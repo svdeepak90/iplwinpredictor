@@ -54,10 +54,14 @@
 
   .col-rank {
     width: 40px;
+    font-weight: bold;
 
     .eliminated-text {
       color: #ef4444;
-      font-weight: bold;
+    }
+
+    .qualified-text {
+      color: #22c55e;
     }
   }
 
