@@ -33,8 +33,12 @@ export class MatchListComponent {
     this.matchFilter.set(filter);
   }
 
+  canPredictMatch(match: Match): boolean {
+    return !this.isPastMatch(match) || this.predictorService.isInitiallyUndecided(match.id);
+  }
+
   selectWinner(matchId: number, teamId: string, match: Match) {
-    if (this.isPastMatch(match)) {
+    if (!this.canPredictMatch(match)) {
       return;
     }
     this.predictorService.predictMatch(matchId, teamId);

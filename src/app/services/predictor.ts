@@ -98,7 +98,7 @@ export class PredictorService {
     { id: 50, matchNo: 50, date: '07-MAY-26', day: 'Thu', team1Id: 'LSG', team2Id: 'RCB', winnerId: 'LSG', toWin: 'LSG won' },
     { id: 51, matchNo: 51, date: '08-MAY-26', day: 'Fri', team1Id: 'DC', team2Id: 'KKR', winnerId: 'KKR', toWin: 'KKR won' },
     { id: 52, matchNo: 52, date: '09-MAY-26', day: 'Sat', team1Id: 'RR', team2Id: 'GT', winnerId: 'GT', toWin: 'GT won' },
-    { id: 53, matchNo: 53, date: '10-MAY-26', day: 'Sun', team1Id: 'CSK', team2Id: 'LSG', winnerId: 'CSK', toWin: 'CSK won' },
+    { id: 53, matchNo: 53, date: '10-MAY-26', day: 'Sun', team1Id: 'CSK', team2Id: 'LSG', winnerId: null, toWin: 'CSK won' },
     { id: 54, matchNo: 54, date: '10-MAY-26', day: 'Sun', team1Id: 'RCB', team2Id: 'MI', winnerId: 'RCB', toWin: 'RCB won' },
     { id: 55, matchNo: 55, date: '11-MAY-26', day: 'Mon', team1Id: 'PBKS', team2Id: 'DC', winnerId: 'DC', toWin: 'DC won' },
     { id: 56, matchNo: 56, date: '12-MAY-26', day: 'Tue', team1Id: 'GT', team2Id: 'SRH', winnerId: 'GT', toWin: 'GT won' },
@@ -172,6 +172,19 @@ export class PredictorService {
       return b.initialNrr - a.initialNrr;
     });
 
+    const allMatchesCompleted = currentMatches.every(m => m.winnerId !== null);
+    if (allMatchesCompleted) {
+      table.forEach((team, index) => {
+        if (index < 4) {
+          team.isQualified = true;
+          team.isEliminated = false;
+        } else {
+          team.isQualified = false;
+          team.isEliminated = true;
+        }
+      });
+    }
+
     return table;
   });
 
@@ -188,6 +201,11 @@ export class PredictorService {
 
   getTeam(id: string): Team | undefined {
     return this.initialTeams.find(t => t.id === id);
+  }
+
+  isInitiallyUndecided(matchId: number): boolean {
+    const initialMatch = this.initialMatches.find(m => m.id === matchId);
+    return initialMatch ? initialMatch.winnerId === null : false;
   }
 
   reset() {
