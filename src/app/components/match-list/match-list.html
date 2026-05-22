@@ -4,42 +4,52 @@
       <h2>Remaining Matches</h2>
       <p>Predict the winner to see playoffs</p>
     </div>
-    
+
     <div class="filter-tabs">
-      <button class="filter-tab" [class.active]="matchFilter() === 'ALL'" (click)="setFilter('ALL')">All</button>
-      <button class="filter-tab" [class.active]="matchFilter() === 'UPCOMING'" (click)="setFilter('UPCOMING')">Upcoming</button>
-      <button class="filter-tab" [class.active]="matchFilter() === 'COMPLETED'" (click)="setFilter('COMPLETED')">Completed</button>
+      <button class="filter-tab" [class.active]="matchFilter() === 'ALL'" (click)="setFilter('ALL')">
+        All
+      </button>
+      <button class="filter-tab" [class.active]="matchFilter() === 'UPCOMING'" (click)="setFilter('UPCOMING')">
+        Upcoming
+      </button>
+      <button class="filter-tab" [class.active]="matchFilter() === 'COMPLETED'" (click)="setFilter('COMPLETED')">
+        Completed
+      </button>
     </div>
   </div>
   <div class="matches-list">
-    <div class="match-card" *ngFor="let match of filteredMatches()" [class.completed-match]="isPastMatch(match) && !canPredictMatch(match)">
-      <div class="match-info">Match {{ match.matchNo }} &bull; {{ match.date }} ({{ match.day }})</div>
-      <div class="match-toss" *ngIf="match.toWin">{{ match.toWin }}</div>
-      <!-- <div class="match-toss" *ngIf="match.toss">{{ match.toss }}</div> -->
-
+    @for (match of filteredMatches(); track match.id) {
+    <div class="match-card" [class.completed-match]="isPastMatch(match) && !canPredictMatch(match)">
+      <div class="match-info">
+        Match {{ match.matchNo }} &bull; {{ match.date }} ({{ match.day }})
+      </div>
+      @if (match.info) {
+      <div class="match-toss">{{ match.info }}</div>
+      }
       <div class="teams-container">
         <!-- Team 1 -->
         <button class="team-btn" [class.selected]="match.winnerId === match.team1Id"
-          [class.dimmed]="match.winnerId && match.winnerId !== match.team1Id"
-          [disabled]="!canPredictMatch(match)"
+          [class.dimmed]="match.winnerId && match.winnerId !== match.team1Id" [disabled]="!canPredictMatch(match)"
           (click)="selectWinner(match.id, match.team1Id, match)">
           <img [src]="getTeamLogo(match.team1Id)" [alt]="match.team1Id + ' logo'" class="team-logo" />
           <span class="team-id">{{ match.team1Id }}</span>
-          <div class="selection-indicator" *ngIf="match.winnerId === match.team1Id">✓</div>
+          @if (match.winnerId === match.team1Id) {
+          <div class="selection-indicator">✓</div>
+          }
         </button>
-
         <div class="vs-badge">VS</div>
-
         <!-- Team 2 -->
         <button class="team-btn" [class.selected]="match.winnerId === match.team2Id"
-          [class.dimmed]="match.winnerId && match.winnerId !== match.team2Id"
-          [disabled]="!canPredictMatch(match)"
+          [class.dimmed]="match.winnerId && match.winnerId !== match.team2Id" [disabled]="!canPredictMatch(match)"
           (click)="selectWinner(match.id, match.team2Id, match)">
-          <div class="selection-indicator" *ngIf="match.winnerId === match.team2Id">✓</div>
+          @if (match.winnerId === match.team2Id) {
+          <div class="selection-indicator">✓</div>
+          }
           <span class="team-id">{{ match.team2Id }}</span>
           <img [src]="getTeamLogo(match.team2Id)" [alt]="match.team2Id + ' logo'" class="team-logo" />
         </button>
       </div>
     </div>
+    }
   </div>
 </div>

@@ -90,6 +90,22 @@
     font-size: 1.125rem;
   }
 
+  .col-prob {
+    width: 80px;
+    font-weight: 600;
+
+    .prob-high {
+      color: #22c55e;
+    }
+    .prob-low {
+      color: #fbbf24;
+    }
+    .prob-zero {
+      color: #ef4444;
+      opacity: 0.7;
+    }
+  }
+
   .col-form {
     width: 140px;
   }
