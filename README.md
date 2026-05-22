@@ -1,59 +1,48 @@
-# IplSimulator
+# IPL Win Predictor & Simulator 🏏
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.10.
+An interactive web application built with Angular 21 to predict and simulate Indian Premier League (IPL) playoff scenarios. The app allows cricket fans to predict the outcomes of remaining matches and instantly see how those results impact their favorite team's chances of making it to the playoffs.
 
-## Development server
+## 🌟 Features
 
-To start a local development server, run:
+* **Interactive Match Predictions:** View a list of remaining matches and select the winner to see how it affects the points table.
+* **Live Points Table:** A dynamic points table that updates instantly based on your match predictions.
+* **Playoff Probability Calculation:** Runs complex simulation scenarios (including Monte Carlo simulations for a large number of unknowns) to accurately calculate the percentage probability of each team qualifying for the playoffs.
+* **Team Form Tracking:** Visual indicators of a team's recent form (Wins, Losses, No Results).
+* **Qualification & Elimination Status:** Automatically highlights teams that have officially qualified for the playoffs or have been mathematically eliminated.
 
-```bash
-ng serve
-```
+## 🚀 Tech Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+* **Framework:** [Angular 21](https://angular.dev/)
+* **State Management:** Angular Signals for highly reactive and efficient state updates.
+* **Templating:** Uses the latest Angular Control Flow syntax (`@if`, `@for`).
+* **Styling:** Custom CSS/SCSS with a modern, glassmorphic aesthetic.
 
-## Code scaffolding
+## 🛠️ Getting Started
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Prerequisites
 
-```bash
-ng generate component component-name
-```
+Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Installation
 
-```bash
-ng generate --help
-```
+1. Clone the repository and navigate to the project directory:
+   ```bash
+   cd iplwinpredictor
+   ```
 
-## Building
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
-To build the project run:
+3. Start the development server:
+   ```bash
+   npm start
+   ```
+   *(or run `ng serve` if you have the Angular CLI installed globally)*
 
-```bash
-ng build
-```
+4. Open your browser and navigate to `http://localhost:4200/` to use the simulator.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🤝 Contributing
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page if you want to contribute.
