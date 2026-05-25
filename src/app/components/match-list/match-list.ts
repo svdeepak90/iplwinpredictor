@@ -13,7 +13,7 @@ export type MatchFilter = 'ALL' | 'UPCOMING' | 'COMPLETED';
 })
 export class MatchListComponent {
   predictorService = inject(PredictorService);
-  matches = this.predictorService.matches;
+  matches = this.predictorService.derivedMatches;
 
   matchFilter = signal<MatchFilter>('ALL');
 

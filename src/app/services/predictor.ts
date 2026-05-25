@@ -33,16 +33,17 @@ export interface Match {
 })
 export class PredictorService {
   private readonly initialTeams: Team[] = [
-    { id: 'RCB', shortName: 'RCB', name: 'Royal Challengers Bengaluru', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/d/d4/Royal_Challengers_Bengaluru_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 1.103, points: 0, initialNrr: 1.065, recentForm: ['W', 'W', 'L', 'L', 'W'], isQualified: true },
-    { id: 'SRH', shortName: 'SRH', name: 'Sunrisers Hyderabad', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/5/51/Sunrisers_Hyderabad_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.737, points: 0, initialNrr: 0.350, recentForm: ['W', 'W', 'L', 'W', 'L'], isQualified: true },
+    { id: 'RCB', shortName: 'RCB', name: 'Royal Challengers Bengaluru', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/d/d4/Royal_Challengers_Bengaluru_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 1.103, points: 0, initialNrr: 0.783, recentForm: ['W', 'W', 'L', 'L', 'W'], isQualified: true },
+    { id: 'SRH', shortName: 'SRH', name: 'Sunrisers Hyderabad', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/5/51/Sunrisers_Hyderabad_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.737, points: 0, initialNrr: 0.524, recentForm: ['W', 'W', 'L', 'W', 'L'], isQualified: true },
     { id: 'GT', shortName: 'GT', name: 'Gujarat Titans', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/0/09/Gujarat_Titans_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.228, points: 0, initialNrr: 0.695, recentForm: ['W', 'W', 'W', 'W', 'W'], isQualified: true },
-    { id: 'PBKS', shortName: 'PBKS', name: 'Punjab Kings', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/d/d4/Punjab_Kings_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.428, points: 0, initialNrr: 0.227, recentForm: ['W', 'L', 'L', 'L', 'L'], isQualified: false },
+    { id: 'PBKS', shortName: 'PBKS', name: 'Punjab Kings', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/d/d4/Punjab_Kings_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.428, points: 0, initialNrr: 0.309, recentForm: ['W', 'L', 'L', 'L', 'L'], isQualified: false },
     { id: 'CSK', shortName: 'CSK', name: 'Chennai Super Kings', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/2/2b/Chennai_Super_Kings_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.185, points: 0, initialNrr: -0.345, recentForm: ['W', 'L', 'W', 'W', 'W'], isQualified: false },
-    { id: 'RR', shortName: 'RR', name: 'Rajasthan Royals', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/5/5c/This_is_the_logo_for_Rajasthan_Royals%2C_a_cricket_team_playing_in_the_Indian_Premier_League_%28IPL%29.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.082, points: 0, initialNrr: 0.083, recentForm: ['W', 'L', 'W', 'L', 'L'], isQualified: false },
-    { id: 'KKR', shortName: 'KKR', name: 'Kolkata Knight Riders', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/4/4c/Kolkata_Knight_Riders_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: -0.169, points: 0, initialNrr: 0.011, recentForm: ['L', 'W', 'W', 'W', 'W'] },
-    { id: 'DC', shortName: 'DC', name: 'Delhi Capitals', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/2/2f/Delhi_Capitals.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: -0.993, points: 0, initialNrr: -0.871, recentForm: ['L', 'W', 'L', 'L', 'W'] },
-    { id: 'MI', shortName: 'MI', name: 'Mumbai Indians', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/c/cd/Mumbai_Indians_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: -0.585, points: 0, initialNrr: -0.510, recentForm: ['L', 'L', 'L', 'W', 'L'], isEliminated: true },
-    { id: 'LSG', shortName: 'LSG', name: 'Lucknow Super Giants', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/3/34/Lucknow_Super_Giants_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: -0.907, points: 0, initialNrr: -0.702, recentForm: ['L', 'L', 'L', 'W', 'L'], isEliminated: true },
+    { id: 'RR', shortName: 'RR', name: 'Rajasthan Royals', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/5/5c/This_is_the_logo_for_Rajasthan_Royals%2C_a_cricket_team_playing_in_the_Indian_Premier_League_%28IPL%29.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0.082, points: 0, initialNrr: 0.189, recentForm: ['W', 'L', 'W', 'L', 'L'], isQualified: false },
+    { id: 'KKR', shortName: 'KKR', name: 'Kolkata Knight Riders', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/4/4c/Kolkata_Knight_Riders_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: -0.169, points: 0, initialNrr: -0.147, recentForm: ['L', 'W', 'W', 'W', 'W'] },
+    { id: 'DC', shortName: 'DC', name: 'Delhi Capitals', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/2/2f/Delhi_Capitals.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: -0.993, points: 0, initialNrr: -0.651, recentForm: ['L', 'W', 'L', 'L', 'W'] },
+    { id: 'MI', shortName: 'MI', name: 'Mumbai Indians', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/c/cd/Mumbai_Indians_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: -0.585, points: 0, initialNrr: -0.584, recentForm: ['L', 'L', 'L', 'W', 'L'], isEliminated: true },
+    { id: 'LSG', shortName: 'LSG', name: 'Lucknow Super Giants', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/3/34/Lucknow_Super_Giants_Logo.svg', matchesPlayed: 0, wins: 0, losses: 0, nrr: -0.907, points: 0, initialNrr: -0.740, recentForm: ['L', 'L', 'L', 'W', 'L'], isEliminated: true },
+    { id: 'TBC', shortName: 'TBC', name: 'To Be Confirmed', logoUrl: '', matchesPlayed: 0, wins: 0, losses: 0, nrr: 0, points: 0, initialNrr: 0, recentForm: [] },
   ];
 
   private readonly initialMatches: Match[] = [
@@ -112,10 +113,14 @@ export class PredictorService {
     { id: 64, matchNo: 64, date: '19-MAY-26', day: 'Tue', team1Id: 'RR', team2Id: 'LSG', winnerId: 'RR', info: 'RR won' },
     { id: 65, matchNo: 65, date: '20-MAY-26', day: 'Wed', team1Id: 'KKR', team2Id: 'MI', winnerId: 'KKR', info: 'KKR won' },
     { id: 66, matchNo: 66, date: '21-MAY-26', day: 'Thu', team1Id: 'GT', team2Id: 'CSK', winnerId: 'GT', info: 'GT won' },
-    { id: 67, matchNo: 67, date: '22-MAY-26', day: 'Fri', team1Id: 'SRH', team2Id: 'RCB', winnerId: null, info: '' },
-    { id: 68, matchNo: 68, date: '23-MAY-26', day: 'Sat', team1Id: 'LSG', team2Id: 'PBKS', winnerId: null, info: '' },
-    { id: 69, matchNo: 69, date: '24-MAY-26', day: 'Sun', team1Id: 'MI', team2Id: 'RR', winnerId: null, info: '' },
-    { id: 70, matchNo: 70, date: '24-MAY-26', day: 'Sun', team1Id: 'KKR', team2Id: 'DC', winnerId: null, info: '' },
+    { id: 67, matchNo: 67, date: '22-MAY-26', day: 'Fri', team1Id: 'SRH', team2Id: 'RCB', winnerId: 'SRH', info: 'SRH won' },
+    { id: 68, matchNo: 68, date: '23-MAY-26', day: 'Sat', team1Id: 'LSG', team2Id: 'PBKS', winnerId: 'PBKS', info: 'PBKS won' },
+    { id: 69, matchNo: 69, date: '24-MAY-26', day: 'Sun', team1Id: 'MI', team2Id: 'RR', winnerId: 'RR', info: 'RR won' },
+    { id: 70, matchNo: 70, date: '24-MAY-26', day: 'Sun', team1Id: 'KKR', team2Id: 'DC', winnerId: 'DC', info: 'DC won' },
+    { id: 71, matchNo: 71, date: '26-MAY-26', day: 'Tue', team1Id: 'TBC', team2Id: 'TBC', winnerId: null, info: 'Qualifier 1' },
+    { id: 72, matchNo: 72, date: '27-MAY-26', day: 'Wed', team1Id: 'TBC', team2Id: 'TBC', winnerId: null, info: 'Eliminator' },
+    { id: 73, matchNo: 73, date: '29-MAY-26', day: 'Fri', team1Id: 'TBC', team2Id: 'TBC', winnerId: null, info: 'Qualifier 2' },
+    { id: 74, matchNo: 74, date: '31-MAY-26', day: 'Sun', team1Id: 'TBC', team2Id: 'TBC', winnerId: null, info: 'Final' },
   ];
 
   matches = signal<Match[]>(this.initialMatches);
@@ -128,7 +133,7 @@ export class PredictorService {
       teamsData[t.id] = { ...t, recentForm: [...t.recentForm] };
     });
 
-    currentMatches.forEach(match => {
+    currentMatches.slice(0, 70).forEach(match => {
       if (match.winnerId === 'NR') {
         const team1 = teamsData[match.team1Id];
         const team2 = teamsData[match.team2Id];
@@ -164,7 +169,7 @@ export class PredictorService {
       }
     });
 
-    const table = Object.values(teamsData);
+    const table = Object.values(teamsData).filter(t => t.id !== 'TBC');
     table.sort((a, b) => {
       if (b.points !== a.points) {
         return b.points - a.points;
@@ -172,7 +177,7 @@ export class PredictorService {
       return b.initialNrr - a.initialNrr;
     });
 
-    const undecidedMatches = currentMatches.filter(m => m.winnerId === null);
+    const undecidedMatches = currentMatches.slice(0, 70).filter(m => m.winnerId === null);
     const scores = table.map(t => ({ id: t.id, points: t.points, initialNrr: t.initialNrr }));
     const qualificationCounts: Record<string, number> = {};
     table.forEach(t => qualificationCounts[t.id] = 0);
@@ -230,6 +235,57 @@ export class PredictorService {
     });
 
     return table;
+  });
+
+  derivedMatches = computed(() => {
+    const currentMatches = this.matches().map(m => ({ ...m }));
+    const table = this.pointsTable();
+
+    // Playoff matches logic
+    const q1 = currentMatches.find(m => m.id === 71);
+    const eliminator = currentMatches.find(m => m.id === 72);
+    const q2 = currentMatches.find(m => m.id === 73);
+    const final = currentMatches.find(m => m.id === 74);
+
+    if (q1 && eliminator && q2 && final) {
+      // Top 4 from the points table
+      const top1 = table[0]?.id || 'TBC';
+      const top2 = table[1]?.id || 'TBC';
+      const top3 = table[2]?.id || 'TBC';
+      const top4 = table[3]?.id || 'TBC';
+
+      q1.team1Id = top1;
+      q1.team2Id = top2;
+      if (q1.winnerId && q1.winnerId !== q1.team1Id && q1.winnerId !== q1.team2Id) {
+        q1.winnerId = null;
+      }
+
+      eliminator.team1Id = top3;
+      eliminator.team2Id = top4;
+      if (eliminator.winnerId && eliminator.winnerId !== eliminator.team1Id && eliminator.winnerId !== eliminator.team2Id) {
+        eliminator.winnerId = null;
+      }
+
+      const q1Loser = q1.winnerId ? (q1.winnerId === q1.team1Id ? q1.team2Id : q1.team1Id) : 'TBC';
+      const eliminatorWinner = eliminator.winnerId || 'TBC';
+
+      q2.team1Id = q1Loser;
+      q2.team2Id = eliminatorWinner;
+      if (q2.winnerId && q2.winnerId !== q2.team1Id && q2.winnerId !== q2.team2Id) {
+        q2.winnerId = null;
+      }
+
+      const q1Winner = q1.winnerId || 'TBC';
+      const q2Winner = q2.winnerId || 'TBC';
+
+      final.team1Id = q1Winner;
+      final.team2Id = q2Winner;
+      if (final.winnerId && final.winnerId !== final.team1Id && final.winnerId !== final.team2Id) {
+        final.winnerId = null;
+      }
+    }
+
+    return currentMatches;
   });
 
   predictMatch(matchId: number, winnerId: string) {
