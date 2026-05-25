@@ -306,3 +306,42 @@
   background: rgba(255, 255, 255, 0.2);
   z-index: 1;
 }
+
+/* --- Responsive Layout --- */
+@media (max-width: 1024px) {
+  .playoffs-wrapper {
+    padding: 1rem;
+    align-items: flex-start;
+  }
+
+  .bracket {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem 0;
+  }
+
+  .column {
+    height: auto;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .col-1, .col-2, .col-3, .col-4 {
+    height: auto;
+    min-height: auto;
+    padding: 0;
+  }
+
+  /* Hide complex horizontal connectors on mobile */
+  .match-wrapper::after,
+  .match-wrapper::before {
+    display: none !important;
+  }
+
+  /* Optional: Add simple vertical connectors instead */
+  .match-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+
