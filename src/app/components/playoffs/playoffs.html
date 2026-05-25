@@ -1,0 +1,86 @@
+<div class="playoffs-wrapper">
+  <div class="bracket">
+    
+    <div class="column col-1">
+      <div class="match-wrapper q1-wrapper">
+        <div class="match-box q1">
+          <div class="match-header">Qualifier 1</div>
+          <ng-container *ngTemplateOutlet="matchTemplate; context: {$implicit: playoffMatches().q1}"></ng-container>
+        </div>
+      </div>
+      
+      <div class="match-wrapper eliminator-wrapper">
+        <div class="match-box eliminator">
+          <div class="match-header">Eliminator</div>
+          <ng-container *ngTemplateOutlet="matchTemplate; context: {$implicit: playoffMatches().eliminator}"></ng-container>
+        </div>
+      </div>
+    </div>
+
+    <div class="column col-2">
+      <div class="match-wrapper q2-wrapper">
+        <div class="match-box q2">
+          <div class="match-header">Qualifier 2</div>
+          <ng-container *ngTemplateOutlet="matchTemplate; context: {$implicit: playoffMatches().q2}"></ng-container>
+        </div>
+      </div>
+    </div>
+
+    <div class="column col-3">
+      <div class="match-wrapper final-wrapper">
+        <div class="match-box final">
+          <div class="match-header">Final</div>
+          <ng-container *ngTemplateOutlet="matchTemplate; context: {$implicit: playoffMatches().final}"></ng-container>
+        </div>
+      </div>
+    </div>
+
+    <div class="column col-4">
+      <div class="match-wrapper champion-wrapper">
+        <div class="match-box champion">
+          <div class="match-header champion-header">Champion 🏆</div>
+          <div class="champion-content" [class.tbc]="!playoffMatches().final?.winnerId">
+            <img *ngIf="getTeam(playoffMatches().final?.winnerId)?.logoUrl" 
+                 [src]="getTeam(playoffMatches().final?.winnerId)?.logoUrl" 
+                 alt="logo" class="team-logo-lg">
+            <div class="logo-placeholder-lg" *ngIf="!getTeam(playoffMatches().final?.winnerId)?.logoUrl">?</div>
+            <div class="team-name-lg">{{ getTeam(playoffMatches().final?.winnerId)?.name || 'TBC' }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<ng-template #matchTemplate let-match>
+  <div class="match-content" *ngIf="match">
+    <div class="team-row" 
+         [class.winner]="match.winnerId === match.team1Id"
+         [class.loser]="match.winnerId && match.winnerId !== match.team1Id"
+         [class.tbc]="match.team1Id === 'TBC'"
+         (click)="predictMatch(match.id, match.team1Id)">
+      <img *ngIf="getTeam(match.team1Id)?.logoUrl" [src]="getTeam(match.team1Id)?.logoUrl" alt="logo" class="team-logo">
+      <div class="logo-placeholder" *ngIf="!getTeam(match.team1Id)?.logoUrl">?</div>
+      <span class="team-name">{{ getTeam(match.team1Id)?.shortName || 'TBC' }}</span>
+      <span class="check" *ngIf="match.winnerId === match.team1Id">✓</span>
+    </div>
+    
+    <div class="vs-divider">
+      <div class="line"></div>
+      <span>VS</span>
+      <div class="line"></div>
+    </div>
+    
+    <div class="team-row" 
+         [class.winner]="match.winnerId === match.team2Id"
+         [class.loser]="match.winnerId && match.winnerId !== match.team2Id"
+         [class.tbc]="match.team2Id === 'TBC'"
+         (click)="predictMatch(match.id, match.team2Id)">
+      <img *ngIf="getTeam(match.team2Id)?.logoUrl" [src]="getTeam(match.team2Id)?.logoUrl" alt="logo" class="team-logo">
+      <div class="logo-placeholder" *ngIf="!getTeam(match.team2Id)?.logoUrl">?</div>
+      <span class="team-name">{{ getTeam(match.team2Id)?.shortName || 'TBC' }}</span>
+      <span class="check" *ngIf="match.winnerId === match.team2Id">✓</span>
+    </div>
+  </div>
+</ng-template>

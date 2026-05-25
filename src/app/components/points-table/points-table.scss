@@ -1,7 +1,6 @@
 .table-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 .table-header {
@@ -97,9 +96,11 @@
     .prob-high {
       color: #22c55e;
     }
+
     .prob-low {
       color: #fbbf24;
     }
+
     .prob-zero {
       color: #ef4444;
       opacity: 0.7;

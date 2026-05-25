@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-
-import { PointsTableComponent } from './components/points-table/points-table';
-import { MatchListComponent } from './components/match-list/match-list';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [PointsTableComponent, MatchListComponent],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
 })

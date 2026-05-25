@@ -35,7 +35,7 @@
         </td>
         <td class="col-team">
           <img [src]="team.logoUrl" [alt]="team.shortName + ' logo'" class="team-logo" />
-          <span class="team-name">{{ team.name }}</span>
+          <span class="team-name">{{ team.name + ' (' + (team.shortName) + ')' }}</span>
           <span class="team-short-name">{{ team.shortName }}</span>
         </td>
         <td class="col-num">{{ team.matchesPlayed }}</td>

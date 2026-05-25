@@ -1,22 +1,18 @@
 <div class="app-container">
   <header class="app-header">
-    <div class="logo">
-      <span class="logo-icon">🏏</span>
-      <h1>IPL 2026 Playoffs Predictor</h1>
+    <div class="header-content">
+      <div class="logo">
+        <span class="logo-icon">🏏</span>
+        <h1>IPL 2026 Predictor</h1>
+      </div>
+      <nav class="main-nav">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">League Stage</a>
+        <a routerLink="/playoffs" routerLinkActive="active">Playoffs Flow</a>
+      </nav>
     </div>
   </header>
 
   <main class="main-content">
-    <div class="grid-layout">
-      <!-- Left Column: Matches List -->
-      <section class="matches-section">
-        <app-match-list></app-match-list>
-      </section>
-
-      <!-- Right Column: Points Table -->
-      <section class="table-section">
-        <app-points-table></app-points-table>
-      </section>
-    </div>
+    <router-outlet></router-outlet>
   </main>
 </div>

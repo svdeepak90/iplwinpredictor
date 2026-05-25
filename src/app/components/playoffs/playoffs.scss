@@ -1,0 +1,308 @@
+.playoffs-wrapper {
+  padding: 2rem;
+  overflow-x: auto;
+  min-height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.bracket {
+  display: flex;
+  gap: 4rem;
+  padding: 2rem;
+  margin: 0 auto;
+  position: relative;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  position: relative;
+}
+
+.col-1 {
+  justify-content: space-between;
+  height: 480px; /* Fixed height for consistent connector drawing */
+}
+
+.col-2 {
+  justify-content: center;
+  height: 480px;
+}
+
+.col-3 {
+  justify-content: flex-start;
+  height: 480px;
+}
+
+.col-4 {
+  justify-content: flex-start;
+  height: 480px;
+}
+
+.match-wrapper {
+  position: relative;
+  height: 150px; /* fixed height for match box */
+  display: flex;
+  align-items: center;
+}
+
+.match-box {
+  width: 280px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.6);
+    border-color: rgba(59, 130, 246, 0.5);
+  }
+}
+
+.match-header {
+  background: rgba(30, 41, 59, 0.9);
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #94a3b8;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  
+  &.champion-header {
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    color: #fff;
+    border: none;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+}
+
+.match-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-row {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  gap: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  &.winner {
+    background: rgba(16, 185, 129, 0.1);
+    .team-name {
+      font-weight: 700;
+      color: #fff;
+    }
+  }
+  
+  &.loser {
+    opacity: 0.5;
+  }
+  
+  &.tbc {
+    cursor: default;
+    opacity: 0.5;
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+.team-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.logo-placeholder {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.team-name {
+  flex: 1;
+  font-size: 1rem;
+  color: #cbd5e1;
+}
+
+.check {
+  color: #10b981;
+  font-weight: bold;
+}
+
+.vs-divider {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  
+  .line {
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  span {
+    padding: 0 0.75rem;
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 600;
+  }
+}
+
+.champion-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  gap: 1rem;
+  background: linear-gradient(to bottom, rgba(251, 191, 36, 0.1), transparent);
+  
+  &.tbc {
+    opacity: 0.5;
+    background: transparent;
+  }
+}
+
+.team-logo-lg {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+
+.logo-placeholder-lg {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.team-name-lg {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+}
+
+/* --- Connectors --- */
+
+/* Q1 straight line to Final */
+.q1-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -23.5rem; /* spans gap(4) + box(17.5) + gap(2) roughly */
+  width: 23.5rem;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 1;
+}
+
+/* Q1 elbow down to Q2 */
+.q1-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -2rem;
+  width: 2rem;
+  height: 165px; 
+  border-top: 2px dashed rgba(255, 255, 255, 0.3);
+  border-right: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 0 8px 0 0;
+  z-index: 1;
+}
+
+/* Eliminator elbow up to Q2 */
+.eliminator-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 50%;
+  right: -2rem;
+  width: 2rem;
+  height: 165px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  border-right: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0 0 8px 0;
+  z-index: 1;
+}
+
+/* Connector entering Q2 */
+.q2-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -2rem;
+  width: 2rem;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 1;
+}
+
+/* Q2 elbow up to Final */
+.q2-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 50%;
+  right: -2rem;
+  width: 2rem;
+  height: 165px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  border-right: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0 0 8px 0;
+  z-index: 1;
+}
+
+/* Connector entering Final (from Q2) */
+.final-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -2rem;
+  width: 2rem;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 1;
+}
+
+/* Final to Champion */
+.final-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -4rem;
+  width: 4rem;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 1;
+}
