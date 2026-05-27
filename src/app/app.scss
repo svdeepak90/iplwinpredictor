@@ -39,8 +39,30 @@
     font-weight: 700;
     background: linear-gradient(90deg, #fff, #9ca3af);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.year-select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  -webkit-text-fill-color: initial;
+  
+  option {
+    background: var(--bg-surface);
+    color: #fff;
   }
 }
 
@@ -50,7 +72,7 @@
   background: rgba(255, 255, 255, 0.05);
   padding: 0.25rem;
   border-radius: 0.5rem;
-  
+
   a {
     padding: 0.5rem 1rem;
     color: #9ca3af;
@@ -58,11 +80,11 @@
     border-radius: 0.375rem;
     font-weight: 500;
     transition: all 0.2s;
-    
+
     &:hover {
       color: #fff;
     }
-    
+
     &.active {
       background: rgba(59, 130, 246, 0.2);
       color: #60a5fa;
@@ -83,7 +105,7 @@
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .main-content {
     padding: 1rem;
   }

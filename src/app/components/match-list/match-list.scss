@@ -162,8 +162,32 @@
   position: relative;
   overflow: hidden;
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.08);
+  &.team-RCB { background: rgba(236, 28, 36, 0.15); border-color: rgba(236, 28, 36, 0.3); }
+  &.team-SRH { background: rgba(242, 101, 34, 0.15); border-color: rgba(242, 101, 34, 0.3); }
+  &.team-GT  { background: rgba(11, 73, 115, 0.25); border-color: rgba(11, 73, 115, 0.4); }
+  &.team-PBKS{ background: rgba(237, 27, 36, 0.15); border-color: rgba(237, 27, 36, 0.3); }
+  &.team-CSK { background: rgba(249, 205, 5, 0.12); border-color: rgba(249, 205, 5, 0.3); }
+  &.team-RR  { background: rgba(234, 26, 133, 0.15); border-color: rgba(234, 26, 133, 0.3); }
+  &.team-KKR { background: rgba(58, 34, 93, 0.25); border-color: rgba(58, 34, 93, 0.4); }
+  &.team-DC  { background: rgba(0, 0, 139, 0.2); border-color: rgba(0, 0, 139, 0.4); }
+  &.team-MI  { background: rgba(0, 75, 160, 0.2); border-color: rgba(0, 75, 160, 0.4); }
+  &.team-LSG { background: rgba(40, 161, 230, 0.15); border-color: rgba(40, 161, 230, 0.3); }
+
+  &:hover:not(:disabled) {
+    &.team-RCB { background: rgba(236, 28, 36, 0.25); }
+    &.team-SRH { background: rgba(242, 101, 34, 0.25); }
+    &.team-GT  { background: rgba(11, 73, 115, 0.35); }
+    &.team-PBKS{ background: rgba(237, 27, 36, 0.25); }
+    &.team-CSK { background: rgba(249, 205, 5, 0.2); }
+    &.team-RR  { background: rgba(234, 26, 133, 0.25); }
+    &.team-KKR { background: rgba(58, 34, 93, 0.35); }
+    &.team-DC  { background: rgba(0, 0, 139, 0.3); }
+    &.team-MI  { background: rgba(0, 75, 160, 0.3); }
+    &.team-LSG { background: rgba(40, 161, 230, 0.25); }
+    
+    &:not([class*="team-"]) {
+      background: rgba(255, 255, 255, 0.08);
+    }
   }
 
   &.selected {

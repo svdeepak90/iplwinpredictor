@@ -11,6 +11,10 @@
   min-height: 0;
 }
 
+.table-section.full-width {
+  grid-column: 1 / -1;
+}
+
 @media (max-width: 1024px) {
   .grid-layout {
     grid-template-columns: 1fr;

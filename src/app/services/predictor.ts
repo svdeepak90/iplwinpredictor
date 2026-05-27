@@ -1,4 +1,5 @@
 import { Injectable, signal, computed } from '@angular/core';
+import { HISTORICAL_DATA } from '../data/historical-points';
 
 export interface Team {
   id: string;
@@ -117,15 +118,23 @@ export class PredictorService {
     { id: 68, matchNo: 68, date: '23-MAY-26', day: 'Sat', team1Id: 'LSG', team2Id: 'PBKS', winnerId: 'PBKS', info: 'PBKS won' },
     { id: 69, matchNo: 69, date: '24-MAY-26', day: 'Sun', team1Id: 'MI', team2Id: 'RR', winnerId: 'RR', info: 'RR won' },
     { id: 70, matchNo: 70, date: '24-MAY-26', day: 'Sun', team1Id: 'KKR', team2Id: 'DC', winnerId: 'DC', info: 'DC won' },
-    { id: 71, matchNo: 71, date: '26-MAY-26', day: 'Tue', team1Id: 'TBC', team2Id: 'TBC', winnerId: null, info: 'Qualifier 1' },
-    { id: 72, matchNo: 72, date: '27-MAY-26', day: 'Wed', team1Id: 'TBC', team2Id: 'TBC', winnerId: null, info: 'Eliminator' },
-    { id: 73, matchNo: 73, date: '29-MAY-26', day: 'Fri', team1Id: 'TBC', team2Id: 'TBC', winnerId: null, info: 'Qualifier 2' },
-    { id: 74, matchNo: 74, date: '31-MAY-26', day: 'Sun', team1Id: 'TBC', team2Id: 'TBC', winnerId: null, info: 'Final' },
+    { id: 71, matchNo: 71, date: '26-MAY-26', day: 'Tue', team1Id: 'RCB', team2Id: 'GT', winnerId: 'RCB', info: 'Qualifier 1 - RCB won' },
+    { id: 72, matchNo: 72, date: '27-MAY-26', day: 'Wed', team1Id: 'SRH', team2Id: 'RR', winnerId: 'RR', info: 'Eliminator - RR won' },
+    { id: 73, matchNo: 73, date: '29-MAY-26', day: 'Fri', team1Id: 'GT', team2Id: 'RR', winnerId: null, info: 'Qualifier 2' },
+    { id: 74, matchNo: 74, date: '31-MAY-26', day: 'Sun', team1Id: 'RCB', team2Id: 'TBC', winnerId: null, info: 'Final' },
   ];
 
   matches = signal<Match[]>(this.initialMatches);
+  selectedYear = signal<number>(2026);
+  isHistoricalYear = computed(() => this.selectedYear() !== 2026);
+
+  availableYears = [2026, ...Object.keys(HISTORICAL_DATA).map(Number).sort((a, b) => b - a)];
 
   pointsTable = computed(() => {
+    if (this.isHistoricalYear()) {
+      return HISTORICAL_DATA[this.selectedYear()] || [];
+    }
+
     const currentMatches = this.matches();
     const teamsData: Record<string, Team> = {};
 

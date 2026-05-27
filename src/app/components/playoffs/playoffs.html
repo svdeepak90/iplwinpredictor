@@ -37,7 +37,7 @@
 
     <div class="column col-4">
       <div class="match-wrapper champion-wrapper">
-        <div class="match-box champion">
+        <div class="match-box champion" [ngClass]="playoffMatches().final?.winnerId ? 'team-' + playoffMatches().final?.winnerId : ''">
           <div class="match-header champion-header">Champion 🏆</div>
           <div class="champion-content" [class.tbc]="!playoffMatches().final?.winnerId">
             <img *ngIf="getTeam(playoffMatches().final?.winnerId)?.logoUrl" 
@@ -59,6 +59,7 @@
          [class.winner]="match.winnerId === match.team1Id"
          [class.loser]="match.winnerId && match.winnerId !== match.team1Id"
          [class.tbc]="match.team1Id === 'TBC'"
+         [ngClass]="'team-' + match.team1Id"
          (click)="predictMatch(match.id, match.team1Id)">
       <img *ngIf="getTeam(match.team1Id)?.logoUrl" [src]="getTeam(match.team1Id)?.logoUrl" alt="logo" class="team-logo">
       <div class="logo-placeholder" *ngIf="!getTeam(match.team1Id)?.logoUrl">?</div>
@@ -76,6 +77,7 @@
          [class.winner]="match.winnerId === match.team2Id"
          [class.loser]="match.winnerId && match.winnerId !== match.team2Id"
          [class.tbc]="match.team2Id === 'TBC'"
+         [ngClass]="'team-' + match.team2Id"
          (click)="predictMatch(match.id, match.team2Id)">
       <img *ngIf="getTeam(match.team2Id)?.logoUrl" [src]="getTeam(match.team2Id)?.logoUrl" alt="logo" class="team-logo">
       <div class="logo-placeholder" *ngIf="!getTeam(match.team2Id)?.logoUrl">?</div>

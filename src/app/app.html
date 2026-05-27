@@ -3,11 +3,21 @@
     <div class="header-content">
       <div class="logo">
         <span class="logo-icon">🏏</span>
-        <h1>IPL 2026 Predictor</h1>
+        <h1>
+          IPL
+          <select class="year-select" (change)="onYearChange($event)" [value]="predictorService.selectedYear()">
+            @for (year of predictorService.availableYears; track year) {
+            <option [value]="year">{{ year }}</option>
+            }
+          </select>
+          Predictor
+        </h1>
       </div>
       <nav class="main-nav">
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">League Stage</a>
+        @if (!predictorService.isHistoricalYear()) {
         <a routerLink="/playoffs" routerLinkActive="active">Playoffs Flow</a>
+        }
       </nav>
     </div>
   </header>

@@ -1,7 +1,9 @@
 <div class="table-container glass-panel">
   <div class="table-header">
-    <h2>Points Table</h2>
+    <h2>Points Table {{ predictorService.selectedYear() }}</h2>
+    @if (!predictorService.isHistoricalYear()) {
     <button class="btn-reset" (click)="reset()">Reset Predictions</button>
+    }
   </div>
 
   <table class="points-table">
@@ -14,14 +16,16 @@
         <th class="col-num" title="Losses">L</th>
         <th class="col-nrr" title="Net Run Rate (Initial)">NRR*</th>
         <th class="col-pts" title="Points">Pts</th>
+        @if (!predictorService.isHistoricalYear()) {
         <th class="col-prob" title="Qualification Probability">Qual %</th>
         <th class="col-form" title="Last 5 Matches">Last 5</th>
+        }
       </tr>
     </thead>
     <tbody>
       @for (team of pointsTable(); track team.shortName; let i = $index) {
       <tr [class.top-four]="i < 4" class="team-row" [class.eliminated]="team.isEliminated"
-        [class.qualified]="team.isQualified">
+        [class.qualified]="team.isQualified" [ngClass]="'team-' + team.id">
         <td class="col-rank">
           @if (team.isEliminated) {
           <span class="eliminated-text" title="Eliminated">E</span>
@@ -47,6 +51,7 @@
         <td class="col-pts">
           <strong>{{ team.points }}</strong>
         </td>
+        @if (!predictorService.isHistoricalYear()) {
         <td class="col-prob">
           @if (team.playoffProbability !== undefined) {
           <span [class.prob-high]="team.playoffProbability >= 50"
@@ -85,6 +90,7 @@
             }
           </div>
         </td>
+        }
       </tr>
       }
     </tbody>
@@ -93,6 +99,7 @@
     <small>* NRR is static based on current standings and used only as tie-breaker.</small>
   </div>
 
+  @if (!predictorService.isHistoricalYear()) {
   <div class="form-legend-box glass-panel">
     <h4>Last 5 matches (Last match latest - Right to Left)</h4>
     <div class="legend-items">
@@ -119,4 +126,5 @@
       </div>
     </div>
   </div>
+  }
 </div>

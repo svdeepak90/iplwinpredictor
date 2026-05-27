@@ -30,6 +30,7 @@
         <!-- Team 1 -->
         <button class="team-btn" [class.selected]="match.winnerId === match.team1Id"
           [class.dimmed]="match.winnerId && match.winnerId !== match.team1Id" [disabled]="!canPredictMatch(match)"
+          [ngClass]="'team-' + match.team1Id"
           (click)="selectWinner(match.id, match.team1Id, match)">
           <img [src]="getTeamLogo(match.team1Id)" [alt]="match.team1Id + ' logo'" class="team-logo" />
           <span class="team-id">{{ match.team1Id }}</span>
@@ -41,6 +42,7 @@
         <!-- Team 2 -->
         <button class="team-btn" [class.selected]="match.winnerId === match.team2Id"
           [class.dimmed]="match.winnerId && match.winnerId !== match.team2Id" [disabled]="!canPredictMatch(match)"
+          [ngClass]="'team-' + match.team2Id"
           (click)="selectWinner(match.id, match.team2Id, match)">
           @if (match.winnerId === match.team2Id) {
           <div class="selection-indicator">✓</div>

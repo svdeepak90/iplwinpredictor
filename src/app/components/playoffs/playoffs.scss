@@ -99,12 +99,43 @@
   cursor: pointer;
   transition: background 0.2s;
   
+  &.team-RCB { background: linear-gradient(90deg, rgba(236, 28, 36, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%); }
+  &.team-SRH { background: linear-gradient(90deg, rgba(242, 101, 34, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%); }
+  &.team-GT  { background: linear-gradient(90deg, rgba(11, 73, 115, 0.25) 0%, rgba(255, 255, 255, 0.02) 100%); }
+  &.team-PBKS{ background: linear-gradient(90deg, rgba(237, 27, 36, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%); }
+  &.team-CSK { background: linear-gradient(90deg, rgba(249, 204, 5, 0.12) 0%, rgba(255, 255, 255, 0.02) 100%); }
+  &.team-RR  { background: linear-gradient(90deg, rgba(234, 26, 133, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%); }
+  &.team-KKR { background: linear-gradient(90deg, rgba(58, 34, 93, 0.25) 0%, rgba(255, 255, 255, 0.02) 100%); }
+  &.team-DC  { background: linear-gradient(90deg, rgba(0, 0, 139, 0.2) 0%, rgba(255, 255, 255, 0.02) 100%); }
+  &.team-MI  { background: linear-gradient(90deg, rgba(0, 75, 160, 0.2) 0%, rgba(255, 255, 255, 0.02) 100%); }
+  &.team-LSG { background: linear-gradient(90deg, rgba(40, 161, 230, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%); }
+
   &:hover {
-    background: rgba(255, 255, 255, 0.05);
+    &.team-RCB { background: linear-gradient(90deg, rgba(236, 28, 36, 0.814) 0%, rgba(255, 255, 255, 0.05) 100%); }
+    &.team-SRH { background: linear-gradient(90deg, rgba(242, 101, 34, 0.814) 0%, rgba(255, 255, 255, 0.05) 100%); }
+    &.team-GT  { background: linear-gradient(90deg, rgba(11, 73, 115, 0.814) 0%, rgba(255, 255, 255, 0.05) 100%); }
+    &.team-PBKS{ background: linear-gradient(90deg, rgba(237, 27, 36, 0.814) 0%, rgba(255, 255, 255, 0.05) 100%); }
+    &.team-CSK { background: linear-gradient(90deg, rgba(249, 204, 5, 0.814) 0%, rgba(255, 255, 255, 0.05) 100%); }
+    &.team-RR  { background: linear-gradient(90deg, rgba(234, 26, 133, 0.814) 0%, rgba(255, 255, 255, 0.05) 100%); }
+    &.team-KKR { background: linear-gradient(90deg, rgba(58, 34, 93, 0.814) 0%, rgba(255, 255, 255, 0.05) 100%); }
+    &.team-DC  { background: linear-gradient(90deg, rgba(0, 0, 139, 0.814) 0%, rgba(255, 255, 255, 0.05) 100%); }
+    &.team-MI  { background: linear-gradient(90deg, rgba(0, 75, 160, 0.814) 0%, rgba(255, 255, 255, 0.05) 100%); }
+    &.team-LSG { background: linear-gradient(90deg, rgba(40, 161, 230, 0.814) 0%, rgba(255, 255, 255, 0.05) 100%); }
+    
+    &:not([class*="team-"]) {
+      background: rgba(255, 255, 255, 0.05);
+    }
   }
   
   &.winner {
-    background: rgba(16, 185, 129, 0.1);
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(16, 185, 129, 0.15);
+      pointer-events: none;
+    }
     .team-name {
       font-weight: 700;
       color: #fff;

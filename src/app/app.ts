@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { PredictorService } from './services/predictor';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,10 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
   styleUrls: ['./app.scss'],
 })
 export class AppComponent {
-  title = 'ipl-simulator';
+  predictorService = inject(PredictorService);
+  
+  onYearChange(event: Event) {
+    const select = event.target as HTMLSelectElement;
+    this.predictorService.selectedYear.set(Number(select.value));
+  }
 }
